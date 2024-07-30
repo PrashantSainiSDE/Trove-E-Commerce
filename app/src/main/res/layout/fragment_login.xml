@@ -7,14 +7,155 @@
     android:layout_height="match_parent"
     tools:context=".ui.main.LoginFragment">
 
-    <TextView
-        android:id="@+id/message"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="LoginFragment"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+       <androidx.constraintlayout.widget.ConstraintLayout
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content">
+
+           <androidx.constraintlayout.widget.Guideline
+               android:id="@+id/guideline"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+               app:layout_constraintGuide_begin="40dp" />
+
+           <androidx.constraintlayout.widget.Guideline
+               android:id="@+id/guideline2"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:orientation="vertical"
+               app:layout_constraintGuide_end="40dp" />
+
+           <TextView
+               android:id="@+id/textView"
+               android:layout_width="0dp"
+               android:layout_height="65dp"
+               android:layout_marginTop="6dp"
+               android:text="Login"
+               android:textAlignment="center"
+               android:textAllCaps="true"
+               android:textColor="@color/primary"
+               android:textStyle="bold"
+               app:autoSizeTextType="uniform"
+               app:layout_constraintEnd_toStartOf="@+id/guideline2"
+               app:layout_constraintStart_toStartOf="@+id/guideline"
+               app:layout_constraintTop_toTopOf="parent" />
+
+           <TextView
+               android:id="@+id/textView2"
+               android:layout_width="wrap_content"
+               android:layout_height="36dp"
+               android:layout_marginTop="20dp"
+               android:text="Username"
+               android:textAlignment="center"
+               android:textColor="@color/black"
+               android:textSize="20sp"
+               android:textStyle="bold"
+               app:layout_constraintEnd_toStartOf="@+id/guideline2"
+               app:layout_constraintStart_toStartOf="@+id/guideline"
+               app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+           <EditText
+               android:id="@+id/loginUsername"
+               android:layout_width="0dp"
+               android:layout_height="43dp"
+               android:layout_marginTop="5dp"
+               android:layout_marginHorizontal="10dp"
+               android:ems="10"
+               android:hint="Enter Email"
+               android:inputType="textEmailAddress"
+               android:textColor="@color/black"
+               android:textColorHint="@color/black"
+               app:layout_constraintEnd_toStartOf="@+id/guideline2"
+               app:layout_constraintStart_toStartOf="@+id/guideline"
+               app:layout_constraintTop_toBottomOf="@+id/textView2"
+               android:autofillHints="emailAddress" />
+
+           <TextView
+               android:id="@+id/textView3"
+               android:layout_width="wrap_content"
+               android:layout_height="36dp"
+               android:layout_marginTop="20dp"
+               android:text="Password"
+               android:textAlignment="center"
+               android:textColor="@color/black"
+               android:textSize="20sp"
+               android:textStyle="bold"
+               app:layout_constraintEnd_toStartOf="@+id/guideline2"
+               app:layout_constraintStart_toStartOf="@+id/guideline"
+               app:layout_constraintTop_toBottomOf="@+id/loginUsername" />
+
+           <EditText
+               android:id="@+id/loginPassword"
+               android:layout_width="0dp"
+               android:layout_height="43dp"
+               android:layout_marginTop="5dp"
+               android:layout_marginHorizontal="10dp"
+               android:ems="10"
+               android:hint="Enter Password"
+               android:inputType="textPassword"
+               android:textColor="@color/black"
+               android:textColorHint="@color/black"
+               app:layout_constraintEnd_toStartOf="@+id/guideline2"
+               app:layout_constraintStart_toStartOf="@+id/guideline"
+               app:layout_constraintTop_toBottomOf="@+id/textView3"
+               android:autofillHints="password" />
+
+           <TextView
+               android:id="@+id/errorLoginTextView"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="15dp"
+               android:gravity="center"
+               android:textColor="@color/black"
+               android:visibility="gone"
+               app:layout_constraintEnd_toStartOf="@+id/guideline2"
+               app:layout_constraintStart_toStartOf="@+id/guideline"
+               app:layout_constraintTop_toBottomOf="@+id/loginPassword" />
+
+           <Button
+               android:id="@+id/loginBtn"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="20dp"
+               android:backgroundTint="@color/primary"
+               android:text="Login"
+               android:textSize="16sp"
+               app:layout_constraintEnd_toStartOf="@+id/guideline2"
+               app:layout_constraintStart_toStartOf="@+id/guideline"
+               app:layout_constraintTop_toBottomOf="@+id/errorLoginTextView" />
+
+           <TextView
+               android:id="@+id/textView4"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:layout_marginTop="40dp"
+               android:gravity="center"
+               android:text="New User"
+               android:textAlignment="center"
+               android:textColor="@color/black"
+               android:textSize="16sp"
+               app:layout_constraintEnd_toStartOf="@+id/guideline2"
+               app:layout_constraintStart_toStartOf="@+id/guideline"
+               app:layout_constraintTop_toBottomOf="@+id/loginBtn" />
+
+           <Button
+               android:id="@+id/registrationPageButton"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:backgroundTint="@color/transparent"
+               android:text="Regsiter Here"
+               android:textColor="@color/primary"
+               app:layout_constraintEnd_toStartOf="@+id/guideline2"
+               app:layout_constraintStart_toStartOf="@+id/guideline"
+               app:layout_constraintTop_toBottomOf="@+id/textView4" />
+
+       </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

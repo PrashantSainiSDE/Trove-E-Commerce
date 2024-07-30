@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
         homeButton.setOnClickListener(view -> {
             Intent intent = new Intent(this, LoginActivity.class);
             startActivity(intent);
+            finish();
         });
     }
 
