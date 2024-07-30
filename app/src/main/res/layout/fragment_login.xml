@@ -13,7 +13,8 @@
 
        <androidx.constraintlayout.widget.ConstraintLayout
            android:layout_width="match_parent"
-           android:layout_height="wrap_content">
+           android:layout_height="wrap_content"
+           android:paddingVertical="10dp">
 
            <androidx.constraintlayout.widget.Guideline
                android:id="@+id/guideline"
@@ -33,7 +34,6 @@
                android:id="@+id/textView"
                android:layout_width="0dp"
                android:layout_height="65dp"
-               android:layout_marginTop="6dp"
                android:text="Login"
                android:textAlignment="center"
                android:textAllCaps="true"
