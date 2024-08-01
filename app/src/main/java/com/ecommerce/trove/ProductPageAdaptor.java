@@ -17,11 +17,12 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.GenericTransitionOptions;
 import com.bumptech.glide.Glide;
 
+import java.io.Serializable;
 import java.util.List;
 import java.util.Locale;
 
 public class ProductPageAdaptor extends RecyclerView.Adapter<ProductPageAdaptor.ViewHolder> {
-    private final List<Product> products;
+    private static List<Product> products;
 
 
     public ProductPageAdaptor(List<Product> products) {
@@ -53,10 +54,9 @@ public class ProductPageAdaptor extends RecyclerView.Adapter<ProductPageAdaptor.
 
             view.setOnClickListener(view1 -> {
                 int position = getAdapterPosition();
-
+                Product product = products.get(position);
                 Intent intent = new Intent(view.getContext(), ProductDetailActivity.class);
-//                intent.putExtra(CARS_DATA, (Serializable) cars);
-//                intent.putExtra(CARS_POSITION, position);
+                intent.putExtra("product", (Serializable) product);
                 view.getContext().startActivity(intent);
             });
         }
