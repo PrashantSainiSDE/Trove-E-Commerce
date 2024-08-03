@@ -32,7 +32,6 @@ public class RegisterFragment extends Fragment {
     private EditText registerPassword;
     private TextView errorMessageTextView;
     private ProgressBar progressBar;
-
     private FirebaseAuth mAuth;
 
     public static RegisterFragment newInstance() {
@@ -43,7 +42,6 @@ public class RegisterFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        // Initialize Firebase Auth
         mAuth = FirebaseAuth.getInstance();
     }
 
@@ -63,9 +61,7 @@ public class RegisterFragment extends Fragment {
         Button register = view.findViewById(R.id.register);
         Button loginPage = view.findViewById(R.id.loginPageButton);
 
-        //Click listener to switch on Login Page
         loginPage.setOnClickListener(v -> changePage());
-
         register.setOnClickListener(v -> saveNewUser());
 
 
@@ -80,7 +76,6 @@ public class RegisterFragment extends Fragment {
     }
 
     private void saveNewUser() {
-        // Get the values from the editable fields
         String username = registerUsername.getText().toString();
         String email = registerEmail.getText().toString();
         String password = registerPassword.getText().toString();

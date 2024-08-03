@@ -22,7 +22,8 @@ import android.widget.Toast;
 import com.ecommerce.trove.ProductActivity;
 import com.ecommerce.trove.R;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.auth.FirebaseUser;
+
+import java.util.Objects;
 
 public class LoginFragment extends Fragment {
 
@@ -59,10 +60,8 @@ public class LoginFragment extends Fragment {
         Button login = view.findViewById(R.id.loginBtn);
         Button registerPage = view.findViewById(R.id.registrationPageButton);
 
-        //login click listener
         login.setOnClickListener(v -> login());
 
-        //Click listener to switch on Register Page
         registerPage.setOnClickListener(v -> {
             FragmentManager fragmentManager = getParentFragmentManager();
             FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
@@ -73,7 +72,6 @@ public class LoginFragment extends Fragment {
     }
 
     private void login() {
-        // Get the values from the editable fields
         String email = loginEmail.getText().toString();
         String password = loginPassword.getText().toString();
 
@@ -82,18 +80,16 @@ public class LoginFragment extends Fragment {
                 .addOnCompleteListener(task -> {
                         if (task.isSuccessful()) {
                     progressBar.setVisibility(View.GONE);
-                            FirebaseUser user = mAuth.getCurrentUser();
+
                             errorMessageTextView.setVisibility(View.GONE);
                             Toast.makeText(getContext(), "Login Successfully", Toast.LENGTH_SHORT).show();
                             Intent intent = new Intent(getContext(), ProductActivity.class);
-                            //send data to dashboard
-                            intent.putExtra("user", user);
                             startActivity(intent);
+                            getActivity().finish();
                         } else {
-                            // If sign in fails, display a message to the user.
         progressBar.setVisibility(View.GONE);
                             errorMessageTextView.setVisibility(View.VISIBLE);
-                            errorMessageTextView.setText(task.getException().getMessage());
+                            errorMessageTextView.setText(Objects.requireNonNull(task.getException()).getMessage());
 
                         }
 

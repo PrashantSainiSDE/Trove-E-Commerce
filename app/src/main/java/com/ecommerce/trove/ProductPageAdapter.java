@@ -1,8 +1,6 @@
 package com.ecommerce.trove;
 
-import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,15 +19,14 @@ import java.io.Serializable;
 import java.util.List;
 import java.util.Locale;
 
-public class ProductPageAdaptor extends RecyclerView.Adapter<ProductPageAdaptor.ViewHolder> {
+public class ProductPageAdapter extends RecyclerView.Adapter<ProductPageAdapter.ViewHolder> {
     private static List<Product> products;
 
 
-    public ProductPageAdaptor(List<Product> products) {
+    public ProductPageAdapter(List<Product> products) {
         this.products = products;
     }
 
-    //view holder class
     public static class ViewHolder extends RecyclerView.ViewHolder  {
 
         private final ImageView productImageView;
@@ -46,10 +43,11 @@ public class ProductPageAdaptor extends RecyclerView.Adapter<ProductPageAdaptor.
             productDescriptionTextView = view.findViewById(R.id.productDescription);
             addToCartButton = view.findViewById(R.id.productAddToCartButton);
 
-//             Define click listener for the ViewHolder's View
             addToCartButton.setOnClickListener(view1 -> {
                 int position = getAdapterPosition();
-                Toast.makeText(view.getContext(),String.valueOf(position), Toast.LENGTH_SHORT).show();
+
+                CartManager.getInstance().addToCart(products.get(position), 1);
+                Toast.makeText(view.getContext(), "Added to cart", Toast.LENGTH_SHORT).show();
             });
 
             view.setOnClickListener(view1 -> {
@@ -82,16 +80,13 @@ public class ProductPageAdaptor extends RecyclerView.Adapter<ProductPageAdaptor.
                viewHolder.productDescriptionTextView.setText(product.getDescription());
         Glide.with(viewHolder.itemView.getContext())
                 .load(product.getImage())
-                .transition(GenericTransitionOptions.with(android.R.anim.fade_in))// Android built-in placeholder
+                .transition(GenericTransitionOptions.with(android.R.anim.fade_in))
                 .error(android.R.drawable.ic_dialog_alert)
                 .into(viewHolder.productImageView);
-
     }
 
-    // set no. of slides on viewPager
     @Override
     public int getItemCount() {
         return products.size();
     }
-
 }
